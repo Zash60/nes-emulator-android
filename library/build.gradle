@@ -1,14 +1,17 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
+    // ALTERADO: de 26 para 30
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 26
+        // ALTERADO: de 26 para 30
+        targetSdkVersion 30
         versionCode 12
         versionName "1.5.1"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // ALTERADO: para a versão AndroidX
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -18,7 +21,6 @@ android {
         }
     }
 
-    // CORREÇÃO 1: Versão do Java atualizada de 1.6 para 1.8
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -31,12 +33,11 @@ android {
     }
 }
 
+// ALTERADO: Dependências atualizadas para AndroidX
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'androidx.appcompat:appcompat:1.3.1' // Era com.android.support:appcompat-v7
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3' // Era com.android.support.test:runner
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0' // Era com.android.support.test.espresso:espresso-core
 }
-
-// CORREÇÃO 2: Bloco 'publish' completamente removido daqui
