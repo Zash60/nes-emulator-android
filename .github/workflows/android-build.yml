@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build Android APK with Java 17
 
 on:
   workflow_dispatch:
@@ -12,22 +12,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 8
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          java-version: '8'
+          java-version: '17'
           distribution: 'temurin'
           cache: gradle
-
-      # NOVO PASSO: Instala um ambiente Android SDK limpo e antigo
-      # Isso evita conflitos com o SDK moderno pré-instalado no runner
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          # Instala apenas a API Level 26, que o projeto usa
-          api-level: 26
-          # Instala apenas as Build Tools 26.0.2, que são compatíveis
-          build-tools: 26.0.2
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
