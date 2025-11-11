@@ -19,6 +19,12 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
+      # CORREÇÃO: Adicionamos ndk-bundle e cmake aqui
+      - name: Set up Android SDK with NDK and CMake
+        uses: android-actions/setup-android@v3
+        with:
+          packages: "ndk-bundle cmake;3.18.1"
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
