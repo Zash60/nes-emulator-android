@@ -1,8 +1,10 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
 buildscript {
     ext.kotlin_version = '1.7.20'
     repositories {
         google()
-        mavenCentral() // <--- ADICIONADO AQUI
+        mavenCentral() // <--- NECESSÁRIO PARA O PLUGIN DO KOTLIN
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.1'
@@ -13,7 +15,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        mavenCentral() // <--- E ADICIONADO AQUI
+        mavenCentral() // <--- ESSA É A LINHA MAIS IMPORTANTE. ELA RESOLVE O ERRO.
     }
 }
 
