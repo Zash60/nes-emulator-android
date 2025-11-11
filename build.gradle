@@ -4,7 +4,7 @@ buildscript {
     ext.kotlin_version = '1.7.20'
     repositories {
         google()
-        mavenCentral() // <--- NECESSÁRIO PARA O PLUGIN DO KOTLIN
+        mavenCentral() // Necessário para baixar o plugin do Kotlin
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.1'
@@ -15,7 +15,9 @@ buildscript {
 allprojects {
     repositories {
         google()
-        mavenCentral() // <--- ESSA É A LINHA MAIS IMPORTANTE. ELA RESOLVE O ERRO.
+        // ESTA É A LINHA QUE RESOLVE O SEU ERRO.
+        // ELA DIZ ONDE ENCONTRAR A BIBLIOTECA kotlin-stdlib-jre7.
+        mavenCentral()
     }
 }
 
