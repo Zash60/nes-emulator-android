@@ -21,12 +21,12 @@ jobs:
         uses: actions/checkout@v4
 
       # 2. Configura o ambiente Java (necessário para o Android/Gradle)
-      - name: Set up JDK 17
+      - name: Set up JDK 8
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: gradle
+        java-version: '8'
+        distribution: 'temurin'
+        cache: gradle
 
       # 3. Dá permissão de execução para o script do Gradle
       - name: Grant execute permission for gradlew
