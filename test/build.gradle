@@ -1,21 +1,21 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-// AVISO: O 'kotlin-android-extensions' é obsoleto, mas vamos mantê-lo por enquanto para não quebrar o código.
-// A compilação deve funcionar mesmo com o aviso de obsoleto.
 apply plugin: 'kotlin-android-extensions'
 
+// SOLUÇÃO: Adicionamos o repositório diretamente aqui também.
+repositories {
+    mavenCentral()
+}
+
 android {
-    // ALTERADO: de 26 para 30
     compileSdkVersion 30
 
     defaultConfig {
         applicationId "com.zash.nes.test"
         minSdkVersion 19
-        // ALTERADO: de 26 para 30
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        // ALTERADO: para a versão AndroidX
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     
@@ -27,7 +27,6 @@ android {
     }
 }
 
-// ALTERADO: Dependências atualizadas para AndroidX
 dependencies {
     implementation project(':library')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
