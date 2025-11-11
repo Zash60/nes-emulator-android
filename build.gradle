@@ -1,23 +1,19 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     ext.kotlin_version = '1.7.20'
     repositories {
         google()
-        mavenCentral() // SUBSTITUÍDO: jcenter() por mavenCentral()
+        mavenCentral() // <--- ADICIONADO AQUI
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        // REMOVIDO: A linha abaixo foi removida pois o bintray não existe mais.
-        // classpath 'com.novoda:bintray-release:0.8.0' 
     }
 }
 
 allprojects {
     repositories {
         google()
-        mavenCentral() // SUBSTITUÍDO: jcenter() por mavenCentral()
+        mavenCentral() // <--- E ADICIONADO AQUI
     }
 }
 
