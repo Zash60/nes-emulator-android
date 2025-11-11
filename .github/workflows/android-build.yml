@@ -19,16 +19,24 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
+      # NOVO PASSO: Instala um ambiente Android SDK limpo e antigo
+      # Isso evita conflitos com o SDK moderno pré-instalado no runner
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          # Instala apenas a API Level 26, que o projeto usa
+          api-level: 26
+          # Instala apenas as Build Tools 26.0.2, que são compatíveis
+          build-tools: 26.0.2
+
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        # MUDANÇA 1: Compilamos o módulo 'test' em vez do 'app'
         run: ./gradlew :test:assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: nes-emulator-debug-apk
-          # MUDANÇA 2: O caminho do APK agora é dentro da pasta 'test'
           path: test/build/outputs/apk/debug/test-debug.apk
