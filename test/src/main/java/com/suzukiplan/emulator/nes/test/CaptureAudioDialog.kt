@@ -50,7 +50,7 @@ class CaptureAudioDialog : DialogFragment(), SurfaceHolder.Callback, Runnable {
         thread?.start()
     }
 
-    override fun surfaceDestroyed(p0: SurfaceHolder?) {
+    override fun surfaceDestroyed(holder: SurfaceHolder?) {
         alive = false
         thread?.join()
         thread = null
