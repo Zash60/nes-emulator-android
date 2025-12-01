@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive  # <-- Add this to init submodules
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -22,10 +24,8 @@ jobs:
       - name: Set up Android SDK with NDK and CMake
         uses: android-actions/setup-android@v3
         with:
-          packages: "ndk-bundle cmake;3.18.1"
+          packages: "ndk;26.1.10909125 cmake;3.22.1"  # <-- Update NDK and CMake to newer versions
 
-      # NOVO PASSO: Força a limpeza do cache do Gradle para garantir que as novas
-      # configurações de repositório (mavenCentral) sejam lidas corretamente.
       - name: Clean Gradle Cache
         run: rm -rf ~/.gradle/caches
 
@@ -34,6 +34,8 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew :test:assembleDebug
+        env:
+          ANDROID_SDK_ACCEPT_LICENSES: "y"  # <-- Explicitly accept licenses if needed
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
