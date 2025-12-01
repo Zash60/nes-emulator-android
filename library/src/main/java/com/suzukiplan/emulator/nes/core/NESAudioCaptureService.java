@@ -1,6 +1,6 @@
 package com.suzukiplan.emulator.nes.core;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
