@@ -2,14 +2,13 @@ package com.suzukiplan.emulator.nes.test
 
 import android.annotation.SuppressLint
 import android.content.Context
-import androidx.core.view.ViewCompat  # <-- Change to androidx
+import androidx.core.view.ViewCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.TextView
 
 class PushableTextView(context: Context, attrs: AttributeSet) : TextView(context, attrs) {
-    
-    private var animation: ViewPropertyAnimatorCompat? = null
+    private var animation: androidx.core.view.ViewPropertyAnimatorCompat? = null
     var onPushChanged: ((pushing: Boolean) -> Unit)? = null
 
     init {
