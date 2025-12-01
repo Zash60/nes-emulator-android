@@ -3,14 +3,15 @@ package com.suzukiplan.emulator.nes.test
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
-import android.support.v4.app.DialogFragment
-import android.support.v4.app.FragmentManager
+import androidx.fragment.app.DialogFragment  # <-- Change to androidx
+import androidx.fragment.app.FragmentManager  # <-- Change to androidx
 import android.view.*
 import com.suzukiplan.emulator.nes.core.NESAudioCaptureService
 import com.suzukiplan.emulator.nes.core.NESView
 import java.nio.ByteBuffer
 
 class CaptureAudioDialog : DialogFragment(), SurfaceHolder.Callback, Runnable {
+    
     private var nesView: NESView? = null
     private var preview: SurfaceView? = null
     private var thread: Thread? = null
