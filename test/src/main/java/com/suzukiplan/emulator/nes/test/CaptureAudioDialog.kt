@@ -3,15 +3,14 @@ package com.suzukiplan.emulator.nes.test
 import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
-import androidx.fragment.app.DialogFragment  # <-- Change to androidx
-import androidx.fragment.app.FragmentManager  # <-- Change to androidx
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import android.view.*
 import com.suzukiplan.emulator.nes.core.NESAudioCaptureService
 import com.suzukiplan.emulator.nes.core.NESView
 import java.nio.ByteBuffer
 
 class CaptureAudioDialog : DialogFragment(), SurfaceHolder.Callback, Runnable {
-    
     private var nesView: NESView? = null
     private var preview: SurfaceView? = null
     private var thread: Thread? = null
@@ -38,6 +37,10 @@ class CaptureAudioDialog : DialogFragment(), SurfaceHolder.Callback, Runnable {
         super.onDestroyView()
     }
 
+    override fun surfaceCreated(holder: SurfaceHolder) {
+        // Empty body as per original
+    }
+
     override fun surfaceChanged(holder: SurfaceHolder?, format: Int, width: Int, height: Int) {
         heightWeight = height.toFloat() / 0x8000
         heightCenter = height / 2f
@@ -51,9 +54,6 @@ class CaptureAudioDialog : DialogFragment(), SurfaceHolder.Callback, Runnable {
         alive = false
         thread?.join()
         thread = null
-    }
-
-    override fun surfaceCreated(holder: SurfaceHolder?) {
     }
 
     override fun run() {
