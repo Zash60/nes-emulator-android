@@ -4,15 +4,14 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog  # <-- Change to androidx
-import androidx.appcompat.app.AppCompatActivity  # <-- Change to androidx
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import com.suzukiplan.emulator.nes.core.NESKey
 import com.suzukiplan.emulator.nes.core.NESLogger
 import com.suzukiplan.emulator.nes.core.NESView
 
 class MainActivity : AppCompatActivity() {
-    
     private var nesView: NESView? = null
     private var tickThread: Thread? = null
     private var active = false
